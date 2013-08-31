@@ -13,7 +13,6 @@
 #include <stdio.h>
 #include <string.h>
 #include <arpa/inet.h>
-#include <objc/runtime.h>
 #include <errno.h>
 #import "CMAttitude+Dummy.h"
 #import "FCMDeviceMotion.h"
@@ -97,7 +96,7 @@
     servaddr.sin_addr.s_addr=htonl(INADDR_ANY);
     servaddr.sin_port=htons(port);
     if(bind(sockfd,(struct sockaddr *)&servaddr,sizeof(servaddr)) == 0){ // bind the socket file descriptor
-        NSLog(@"Started reading");
+       // successful
     }else{
         // Error binding socket
         printf("Error binding socket: %s",strerror(errno));
@@ -122,17 +121,6 @@
     }
 
 }
-//
-//-(void)printMatrix:(CMRotationMatrix)pMat{
-//    double arr[9];
-//    memcpy(arr, &pMat, 9*sizeof(double));
-//    for(int i=0; i<3; i++){
-//        for(int j=0; j<3; j++){
-//            printf("%lf ",arr[i*3+j]);
-//        }
-//
-//    }
-//}
 
 
 @end
